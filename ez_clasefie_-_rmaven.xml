@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ez_clasefie_-_rmaven" default="all">
+
+
+    <property file="ez_clasefie_-_rmaven.properties"/>
+    <!-- Uncomment the following property if no tests compilation is needed -->
+    <!--
+    <property name="skip.tests" value="true"/>
+     -->
+
+    <!-- Compiler options -->
+
+    <property name="compiler.debug" value="on"/>
+    <property name="compiler.generate.no.warnings" value="off"/>
+    <property name="compiler.args" value=""/>
+    <property name="compiler.max.memory" value="700m"/>
+    <patternset id="ignored.files">
+        <exclude name="**/*.hprof/**"/>
+        <exclude name="**/*.pyc/**"/>
+        <exclude name="**/*.pyo/**"/>
+        <exclude name="**/*.rbc/**"/>
+        <exclude name="**/*.yarb/**"/>
+        <exclude name="**/*~/**"/>
+        <exclude name="**/.DS_Store/**"/>
+        <exclude name="**/.git/**"/>
+        <exclude name="**/.hg/**"/>
+        <exclude name="**/.svn/**"/>
+        <exclude name="**/CVS/**"/>
+        <exclude name="**/__pycache__/**"/>
+        <exclude name="**/_svn/**"/>
+        <exclude name="**/vssver.scc/**"/>
+        <exclude name="**/vssver2.scc/**"/>
+    </patternset>
+    <patternset id="library.patterns">
+        <include name="*.egg"/>
+        <include name="*.jar"/>
+        <include name="*.ear"/>
+        <include name="*.klib"/>
+        <include name="*.swc"/>
+        <include name="*.war"/>
+        <include name="*.zip"/>
+        <include name="*.ane"/>
+    </patternset>
+    <patternset id="compiler.resources">
+        <exclude name="**/?*.java"/>
+        <exclude name="**/?*.form"/>
+        <exclude name="**/?*.class"/>
+        <exclude name="**/?*.groovy"/>
+        <exclude name="**/?*.scala"/>
+        <exclude name="**/?*.flex"/>
+        <exclude name="**/?*.kt"/>
+        <exclude name="**/?*.clj"/>
+        <exclude name="**/?*.aj"/>
+    </patternset>
+
+    <!-- JDK definitions -->
+
+    <property name="jdk.bin.13" value="${jdk.home.13}/bin"/>
+    <path id="jdk.classpath.13">
+        <fileset dir="${jdk.home.13}">
+            <include name="../jdk-13.0.1!/java.base"/>
+            <include name="../jdk-13.0.1!/java.compiler"/>
+            <include name="../jdk-13.0.1!/java.datatransfer"/>
+            <include name="../jdk-13.0.1!/java.desktop"/>
+            <include name="../jdk-13.0.1!/java.instrument"/>
+            <include name="../jdk-13.0.1!/java.logging"/>
+            <include name="../jdk-13.0.1!/java.management"/>
+            <include name="../jdk-13.0.1!/java.management.rmi"/>
+            <include name="../jdk-13.0.1!/java.naming"/>
+            <include name="../jdk-13.0.1!/java.net.http"/>
+            <include name="../jdk-13.0.1!/java.prefs"/>
+            <include name="../jdk-13.0.1!/java.rmi"/>
+            <include name="../jdk-13.0.1!/java.scripting"/>
+            <include name="../jdk-13.0.1!/java.se"/>
+            <include name="../jdk-13.0.1!/java.security.jgss"/>
+            <include name="../jdk-13.0.1!/java.security.sasl"/>
+            <include name="../jdk-13.0.1!/java.smartcardio"/>
+            <include name="../jdk-13.0.1!/java.sql"/>
+            <include name="../jdk-13.0.1!/java.sql.rowset"/>
+            <include name="../jdk-13.0.1!/java.transaction.xa"/>
+            <include name="../jdk-13.0.1!/java.xml"/>
+            <include name="../jdk-13.0.1!/java.xml.crypto"/>
+            <include name="../jdk-13.0.1!/jdk.accessibility"/>
+            <include name="../jdk-13.0.1!/jdk.aot"/>
+            <include name="../jdk-13.0.1!/jdk.attach"/>
+            <include name="../jdk-13.0.1!/jdk.charsets"/>
+            <include name="../jdk-13.0.1!/jdk.compiler"/>
+            <include name="../jdk-13.0.1!/jdk.crypto.cryptoki"/>
+            <include name="../jdk-13.0.1!/jdk.crypto.ec"/>
+            <include name="../jdk-13.0.1!/jdk.crypto.mscapi"/>
+            <include name="../jdk-13.0.1!/jdk.dynalink"/>
+            <include name="../jdk-13.0.1!/jdk.editpad"/>
+            <include name="../jdk-13.0.1!/jdk.hotspot.agent"/>
+            <include name="../jdk-13.0.1!/jdk.httpserver"/>
+            <include name="../jdk-13.0.1!/jdk.internal.ed"/>
+            <include name="../jdk-13.0.1!/jdk.internal.jvmstat"/>
+            <include name="../jdk-13.0.1!/jdk.internal.le"/>
+            <include name="../jdk-13.0.1!/jdk.internal.opt"/>
+            <include name="../jdk-13.0.1!/jdk.internal.vm.ci"/>
+            <include name="../jdk-13.0.1!/jdk.internal.vm.compiler"/>
+            <include name="../jdk-13.0.1!/jdk.internal.vm.compiler.management"/>
+            <include name="../jdk-13.0.1!/jdk.jartool"/>
+            <include name="../jdk-13.0.1!/jdk.javadoc"/>
+            <include name="../jdk-13.0.1!/jdk.jcmd"/>
+            <include name="../jdk-13.0.1!/jdk.jconsole"/>
+            <include name="../jdk-13.0.1!/jdk.jdeps"/>
+            <include name="../jdk-13.0.1!/jdk.jdi"/>
+            <include name="../jdk-13.0.1!/jdk.jdwp.agent"/>
+            <include name="../jdk-13.0.1!/jdk.jfr"/>
+            <include name="../jdk-13.0.1!/jdk.jlink"/>
+            <include name="../jdk-13.0.1!/jdk.jshell"/>
+            <include name="../jdk-13.0.1!/jdk.jsobject"/>
+            <include name="../jdk-13.0.1!/jdk.jstatd"/>
+            <include name="../jdk-13.0.1!/jdk.localedata"/>
+            <include name="../jdk-13.0.1!/jdk.management"/>
+            <include name="../jdk-13.0.1!/jdk.management.agent"/>
+            <include name="../jdk-13.0.1!/jdk.management.jfr"/>
+            <include name="../jdk-13.0.1!/jdk.naming.dns"/>
+            <include name="../jdk-13.0.1!/jdk.naming.rmi"/>
+            <include name="../jdk-13.0.1!/jdk.net"/>
+            <include name="../jdk-13.0.1!/jdk.pack"/>
+            <include name="../jdk-13.0.1!/jdk.rmic"/>
+            <include name="../jdk-13.0.1!/jdk.scripting.nashorn"/>
+            <include name="../jdk-13.0.1!/jdk.scripting.nashorn.shell"/>
+            <include name="../jdk-13.0.1!/jdk.sctp"/>
+            <include name="../jdk-13.0.1!/jdk.security.auth"/>
+            <include name="../jdk-13.0.1!/jdk.security.jgss"/>
+            <include name="../jdk-13.0.1!/jdk.unsupported"/>
+            <include name="../jdk-13.0.1!/jdk.unsupported.desktop"/>
+            <include name="../jdk-13.0.1!/jdk.xml.dom"/>
+            <include name="../jdk-13.0.1!/jdk.zipfs"/>
+        </fileset>
+    </path>
+
+    <property name="project.jdk.home" value="${jdk.home.13}"/>
+    <property name="project.jdk.bin" value="${jdk.bin.13}"/>
+    <property name="project.jdk.classpath" value="jdk.classpath.13"/>
+
+
+    <!-- Project Libraries -->
+
+    <path id="library.maven:_org.tensorflow:libtensorflow:1.15.0.classpath">
+        <pathelement
+                location="${path.variable.maven_repository}/org/tensorflow/libtensorflow/1.15.0/libtensorflow-1.15.0.jar"/>
+    </path>
+
+    <path id="library.maven:_org.tensorflow:libtensorflow_jni:1.15.0.classpath">
+        <pathelement
+                location="${path.variable.maven_repository}/org/tensorflow/libtensorflow_jni/1.15.0/libtensorflow_jni-1.15.0.jar"/>
+    </path>
+
+    <path id="library.maven:_org.tensorflow:tensorflow:1.15.0.classpath">
+        <pathelement
+                location="${path.variable.maven_repository}/org/tensorflow/tensorflow/1.15.0/tensorflow-1.15.0.jar"/>
+    </path>
+
+    <path id="library.org.tensorflow:libtensorflow:1.15.0.classpath">
+        <pathelement
+                location="${path.variable.maven_repository}/org/tensorflow/libtensorflow/1.15.0/libtensorflow-1.15.0.jar"/>
+    </path>
+
+    <path id="library.org.tensorflow:tensorflow:1.15.0.classpath">
+        <pathelement
+                location="${path.variable.maven_repository}/org/tensorflow/libtensorflow/1.15.0/libtensorflow-1.15.0.jar"/>
+        <pathelement
+                location="${path.variable.maven_repository}/org/tensorflow/libtensorflow_jni/1.15.0/libtensorflow_jni-1.15.0.jar"/>
+        <pathelement
+                location="${path.variable.maven_repository}/org/tensorflow/tensorflow/1.15.0/tensorflow-1.15.0.jar"/>
+    </path>
+
+
+    <!-- Global Libraries -->
+    <!-- Register Custom Compiler Taskdefs -->
+    <property name="javac2.home" value="${idea.home}/lib"/>
+    <path id="javac2.classpath">
+        <fileset dir="${javac2.home}">
+            <include name="javac2.jar"/>
+            <include name="jdom.jar"/>
+            <include name="asm-all*.jar"/>
+            <include name="forms-*.jar"/>
+        </fileset>
+    </path>
+    <target name="register.custom.compilers">
+        <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+        <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions"
+                 classpathref="javac2.classpath"/>
+    </target>
+
+    <!-- Modules -->
+
+
+    <!-- Module EZ_Clasefie - rmaven -->
+
+    <dirname property="module.ez_clasefie_-_rmaven.basedir" file="${ant.file}"/>
+
+
+    <property name="module.jdk.home.ez_clasefie_-_rmaven" value="${project.jdk.home}"/>
+    <property name="module.jdk.bin.ez_clasefie_-_rmaven" value="${project.jdk.bin}"/>
+    <property name="module.jdk.classpath.ez_clasefie_-_rmaven" value="${project.jdk.classpath}"/>
+
+    <property name="compiler.args.ez_clasefie_-_rmaven" value="-encoding UTF-8 -source 7 -target 7 ${compiler.args}"/>
+
+    <property name="ez_clasefie_-_rmaven.output.dir" value="${module.ez_clasefie_-_rmaven.basedir}/target/classes"/>
+    <property name="ez_clasefie_-_rmaven.testoutput.dir"
+              value="${module.ez_clasefie_-_rmaven.basedir}/target/test-classes"/>
+
+    <path id="ez_clasefie_-_rmaven.module.bootclasspath">
+        <!-- Paths to be included in compilation bootclasspath -->
+    </path>
+
+    <path id="ez_clasefie_-_rmaven.module.production.classpath">
+        <path refid="${module.jdk.classpath.ez_clasefie_-_rmaven}"/>
+        <path refid="library.org.tensorflow:libtensorflow:1.15.0.classpath"/>
+        <path refid="library.org.tensorflow:tensorflow:1.15.0.classpath"/>
+        <path refid="library.maven:_org.tensorflow:tensorflow:1.15.0.classpath"/>
+        <path refid="library.maven:_org.tensorflow:libtensorflow_jni:1.15.0.classpath"/>
+        <path refid="library.maven:_org.tensorflow:libtensorflow:1.15.0.classpath"/>
+    </path>
+
+    <path id="ez_clasefie_-_rmaven.runtime.production.module.classpath">
+        <pathelement location="${ez_clasefie_-_rmaven.output.dir}"/>
+        <path refid="library.org.tensorflow:libtensorflow:1.15.0.classpath"/>
+        <path refid="library.org.tensorflow:tensorflow:1.15.0.classpath"/>
+        <path refid="library.maven:_org.tensorflow:tensorflow:1.15.0.classpath"/>
+        <path refid="library.maven:_org.tensorflow:libtensorflow_jni:1.15.0.classpath"/>
+        <path refid="library.maven:_org.tensorflow:libtensorflow:1.15.0.classpath"/>
+    </path>
+
+    <path id="ez_clasefie_-_rmaven.module.classpath">
+        <path refid="${module.jdk.classpath.ez_clasefie_-_rmaven}"/>
+        <pathelement location="${ez_clasefie_-_rmaven.output.dir}"/>
+        <path refid="library.org.tensorflow:libtensorflow:1.15.0.classpath"/>
+        <path refid="library.org.tensorflow:tensorflow:1.15.0.classpath"/>
+        <path refid="library.maven:_org.tensorflow:tensorflow:1.15.0.classpath"/>
+        <path refid="library.maven:_org.tensorflow:libtensorflow_jni:1.15.0.classpath"/>
+        <path refid="library.maven:_org.tensorflow:libtensorflow:1.15.0.classpath"/>
+    </path>
+
+    <path id="ez_clasefie_-_rmaven.runtime.module.classpath">
+        <pathelement location="${ez_clasefie_-_rmaven.testoutput.dir}"/>
+        <pathelement location="${ez_clasefie_-_rmaven.output.dir}"/>
+        <path refid="library.org.tensorflow:libtensorflow:1.15.0.classpath"/>
+        <path refid="library.org.tensorflow:tensorflow:1.15.0.classpath"/>
+        <path refid="library.maven:_org.tensorflow:tensorflow:1.15.0.classpath"/>
+        <path refid="library.maven:_org.tensorflow:libtensorflow_jni:1.15.0.classpath"/>
+        <path refid="library.maven:_org.tensorflow:libtensorflow:1.15.0.classpath"/>
+    </path>
+
+
+    <patternset id="excluded.from.module.ez_clasefie_-_rmaven">
+        <patternset refid="ignored.files"/>
+    </patternset>
+
+    <patternset id="excluded.from.compilation.ez_clasefie_-_rmaven">
+        <patternset refid="excluded.from.module.ez_clasefie_-_rmaven"/>
+    </patternset>
+
+    <path id="ez_clasefie_-_rmaven.module.sourcepath">
+        <dirset dir="${module.ez_clasefie_-_rmaven.basedir}">
+            <include name="src/main/java"/>
+            <include name="src/main/resources"/>
+        </dirset>
+    </path>
+
+    <path id="ez_clasefie_-_rmaven.module.test.sourcepath">
+        <dirset dir="${module.ez_clasefie_-_rmaven.basedir}">
+            <include name="src/test/java"/>
+        </dirset>
+    </path>
+
+
+    <target name="compile.module.ez_clasefie_-_rmaven"
+            depends="compile.module.ez_clasefie_-_rmaven.production,compile.module.ez_clasefie_-_rmaven.tests"
+            description="Compile module EZ_Clasefie - rmaven"/>
+
+    <target name="compile.module.ez_clasefie_-_rmaven.production" depends="register.custom.compilers"
+            description="Compile module EZ_Clasefie - rmaven; production classes">
+        <mkdir dir="${ez_clasefie_-_rmaven.output.dir}"/>
+        <javac2 destdir="${ez_clasefie_-_rmaven.output.dir}" debug="${compiler.debug}"
+                nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true"
+                executable="${module.jdk.bin.ez_clasefie_-_rmaven}/javac">
+            <compilerarg line="${compiler.args.ez_clasefie_-_rmaven}"/>
+            <bootclasspath refid="ez_clasefie_-_rmaven.module.bootclasspath"/>
+            <classpath refid="ez_clasefie_-_rmaven.module.production.classpath"/>
+            <src refid="ez_clasefie_-_rmaven.module.sourcepath"/>
+            <patternset refid="excluded.from.compilation.ez_clasefie_-_rmaven"/>
+        </javac2>
+
+        <copy todir="${ez_clasefie_-_rmaven.output.dir}">
+            <fileset dir="${module.ez_clasefie_-_rmaven.basedir}/src/main/java">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+            <fileset dir="${module.ez_clasefie_-_rmaven.basedir}/src/main/resources">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="compile.module.ez_clasefie_-_rmaven.tests"
+            depends="register.custom.compilers,compile.module.ez_clasefie_-_rmaven.production"
+            description="compile module EZ_Clasefie - rmaven; test classes" unless="skip.tests">
+        <mkdir dir="${ez_clasefie_-_rmaven.testoutput.dir}"/>
+        <javac2 destdir="${ez_clasefie_-_rmaven.testoutput.dir}" debug="${compiler.debug}"
+                nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true"
+                executable="${module.jdk.bin.ez_clasefie_-_rmaven}/javac">
+            <compilerarg line="${compiler.args.ez_clasefie_-_rmaven}"/>
+            <bootclasspath refid="ez_clasefie_-_rmaven.module.bootclasspath"/>
+            <classpath refid="ez_clasefie_-_rmaven.module.classpath"/>
+            <src refid="ez_clasefie_-_rmaven.module.test.sourcepath"/>
+            <patternset refid="excluded.from.compilation.ez_clasefie_-_rmaven"/>
+        </javac2>
+
+        <copy todir="${ez_clasefie_-_rmaven.testoutput.dir}">
+            <fileset dir="${module.ez_clasefie_-_rmaven.basedir}/src/test/java">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="clean.module.ez_clasefie_-_rmaven" description="cleanup module">
+        <delete dir="${ez_clasefie_-_rmaven.output.dir}"/>
+        <delete dir="${ez_clasefie_-_rmaven.testoutput.dir}"/>
+    </target>
+
+
+    <!-- Module model_converter -->
+
+    <dirname property="module.model_converter.basedir" file="${ant.file}"/>
+
+
+    <property name="module.jdk.home.model_converter" value="${jdk.home.python_3.7}"/>
+    <property name="module.jdk.bin.model_converter" value="${jdk.bin.python_3.7}"/>
+    <property name="module.jdk.classpath.model_converter" value="jdk.classpath.python_3.7"/>
+
+    <property name="compiler.args.model_converter" value="-encoding UTF-8 -source 13 -target 13 ${compiler.args}"/>
+
+    <property name="model_converter.output.dir"
+              value="${module.model_converter.basedir}/out/production/model_converter"/>
+    <property name="model_converter.testoutput.dir" value="${module.model_converter.basedir}/out/test/model_converter"/>
+
+    <path id="model_converter.module.bootclasspath">
+        <!-- Paths to be included in compilation bootclasspath -->
+    </path>
+
+    <path id="model_converter.module.production.classpath">
+        <path refid="${module.jdk.classpath.model_converter}"/>
+    </path>
+
+    <path id="model_converter.runtime.production.module.classpath">
+        <pathelement location="${model_converter.output.dir}"/>
+    </path>
+
+    <path id="model_converter.module.classpath">
+        <path refid="${module.jdk.classpath.model_converter}"/>
+        <pathelement location="${model_converter.output.dir}"/>
+    </path>
+
+    <path id="model_converter.runtime.module.classpath">
+        <pathelement location="${model_converter.testoutput.dir}"/>
+        <pathelement location="${model_converter.output.dir}"/>
+    </path>
+
+
+    <patternset id="excluded.from.module.model_converter">
+        <patternset refid="ignored.files"/>
+    </patternset>
+
+    <patternset id="excluded.from.compilation.model_converter">
+        <patternset refid="excluded.from.module.model_converter"/>
+    </patternset>
+
+
+    <target name="compile.module.model_converter"
+            depends="compile.module.model_converter.production,compile.module.model_converter.tests"
+            description="Compile module model_converter"/>
+
+    <target name="compile.module.model_converter.production" depends="register.custom.compilers"
+            description="Compile module model_converter; production classes"/>
+
+    <target name="compile.module.model_converter.tests"
+            depends="register.custom.compilers,compile.module.model_converter.production"
+            description="compile module model_converter; test classes" unless="skip.tests"/>
+
+    <target name="clean.module.model_converter" description="cleanup module">
+        <delete dir="${model_converter.output.dir}"/>
+        <delete dir="${model_converter.testoutput.dir}"/>
+    </target>
+
+    <target name="init" description="Build initialization">
+        <!-- Perform any build initialization in this target -->
+    </target>
+
+    <target name="clean" depends="clean.module.ez_clasefie_-_rmaven, clean.module.model_converter"
+            description="cleanup all"/>
+
+    <target name="build.modules"
+            depends="init, clean, compile.module.ez_clasefie_-_rmaven, compile.module.model_converter"
+            description="build all modules"/>
+
+    <target name="init.artifacts">
+        <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+        <property name="artifact.output.ez_clasefie_-_rmaven:jar"
+                  value="${basedir}/out/artifacts/EZ_Clasefie___rmaven_jar"/>
+        <mkdir dir="${artifacts.temp.dir}"/>
+        <property name="temp.jar.path.EZ_Clasefie - rmaven.jar" value="${artifacts.temp.dir}/EZ_Clasefie - rmaven.jar"/>
+    </target>
+
+    <target name="artifact.ez_clasefie_-_rmaven:jar" depends="init.artifacts, compile.module.ez_clasefie_-_rmaven"
+            description="Build &#39;EZ_Clasefie - rmaven:jar&#39; artifact">
+        <property name="artifact.temp.output.ez_clasefie_-_rmaven:jar"
+                  value="${artifacts.temp.dir}/EZ_Clasefie___rmaven_jar"/>
+        <mkdir dir="${artifact.temp.output.ez_clasefie_-_rmaven:jar}"/>
+        <jar destfile="${temp.jar.path.EZ_Clasefie - rmaven.jar}" duplicate="preserve"
+             filesetmanifest="mergewithoutmain">
+            <zipfileset dir="${ez_clasefie_-_rmaven.output.dir}"/>
+            <zipfileset src="${path.variable.maven_repository}/org/tensorflow/tensorflow/1.15.0/tensorflow-1.15.0.jar"/>
+            <zipfileset
+                    src="${path.variable.maven_repository}/org/tensorflow/libtensorflow/1.15.0/libtensorflow-1.15.0.jar"/>
+            <zipfileset
+                    src="${path.variable.maven_repository}/org/tensorflow/libtensorflow_jni/1.15.0/libtensorflow_jni-1.15.0.jar"/>
+        </jar>
+        <copy file="${temp.jar.path.EZ_Clasefie - rmaven.jar}"
+              tofile="${artifact.temp.output.ez_clasefie_-_rmaven:jar}/EZ_Clasefie - rmaven.jar"/>
+    </target>
+
+    <target name="build.all.artifacts" depends="artifact.ez_clasefie_-_rmaven:jar" description="Build all artifacts">
+        <mkdir dir="${artifact.output.ez_clasefie_-_rmaven:jar}"/>
+        <copy todir="${artifact.output.ez_clasefie_-_rmaven:jar}">
+            <fileset dir="${artifact.temp.output.ez_clasefie_-_rmaven:jar}"/>
+        </copy>
+
+        <!-- Delete temporary files -->
+        <delete dir="${artifacts.temp.dir}"/>
+    </target>
+
+    <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>
