@@ -13,13 +13,17 @@ import java.util.Arrays;
  * A simple, easy to use classifier that uses tensorflow graph
  */
 public class EZClassifier extends InceptionImageClassifier {
-    /**
-     * @param pb_tf_file model file
-     * @param labels     labels file
-     * @throws Exception file not found
-     */
-    EZClassifier(File pb_tf_file, File labels) throws Exception {
-        super();
+    private int imgWidth;
+    private int imgHeight;
+    private String input_operation;
+    private String output_operation;
+
+    public EZClassifier(File pb_tf_file, File labels, int imgWidth, int imgHeight, String input_operation, String output_operation) throws Exception {
+        this.imgWidth = imgWidth;
+        this.imgHeight = imgHeight;
+        this.input_operation = input_operation;
+        this.output_operation = output_operation;
+
         if (pb_tf_file.exists() && labels.exists()) {
             try {
                 load_model(Files.readAllBytes(pb_tf_file.toPath()), readLabels(labels));
@@ -32,11 +36,30 @@ public class EZClassifier extends InceptionImageClassifier {
         }
     }
 
-//    EZClassifier(){
-//        FileChooser fileChooser = new FileChooser();
-//        fileChooser.setTitle("Open Resource File");
-//        fileChooser.showOpenDialog(stage);
-//    }
+    /**
+     * @param pb_tf_file model file
+     * @param labels     labels file
+     * @throws Exception file not found
+     */
+    EZClassifier(File pb_tf_file, File labels) throws Exception {
+        super();
+        this.imgWidth = 224;
+        this.imgHeight = 224;
+        this.input_operation = "sequential_1_input";
+        this.output_operation = "sequential_3/dense_Dense2/Softmax";
+
+        if (pb_tf_file.exists() && labels.exists()) {
+            try {
+                load_model(Files.readAllBytes(pb_tf_file.toPath()), readLabels(labels));
+            } catch (Exception exp) {
+                System.out.println("Error classifier file");
+                exp.printStackTrace();
+            }
+        } else {
+            throw new Exception("File not found");
+        }
+    }
+
 
     /**
      * Demo
@@ -46,8 +69,8 @@ public class EZClassifier extends InceptionImageClassifier {
     public static void main(String[] args) throws Exception {
         System.out.println(TensorFlow.version());
         EZClassifier ezClassifier = new EZClassifier(new File("example_files\\sample_model.pb"), new File("example_files\\labels.txt"));
-        ezClassifier.print_pred_teachable_machine(new File("example_files\\me.jpg"));
-        ezClassifier.print_pred_teachable_machine(new File("example_files\\no_me.jpg"));
+        ezClassifier.print_pred(new File("example_files\\me.jpg"));
+        ezClassifier.print_pred(new File("example_files\\no_me.jpg"));
 
     }
 
@@ -69,39 +92,42 @@ public class EZClassifier extends InceptionImageClassifier {
         return labelsAL.toArray(new String[0]);
     }
 
+
     /**
-     * predicts an image based on the neural network, assuming a file created by the teachable machine example
+     * predicts an image based on the neural network
      *
      * @param image image to process
      * @return prediction
      * @throws IOException model failed to process the image file properly
      */
-    String predict_image_teachable_machine(File image) throws IOException {
-        return super.predict_image(ImageIO.read(image), 224, 224, "sequential_1_input", "sequential_3/dense_Dense2/Softmax");
+    String predict_image(File image) throws IOException {
+        return super.predict_image(ImageIO.read(image), this.imgWidth, this.imgHeight, this.input_operation, this.output_operation);
     }
 
+
     /**
-     * predicts an image probabilities based on the neural network, assuming a file created by the teachable machine example
+     * predicts an image probabilities based on the neural network
      *
      * @param image image to process
      * @return prediction probabilities
      * @throws IOException model failed to process the image file properly
      */
-    float[] predict_image_prob_teachable_machine(File image) throws IOException {
-        return super.predict_image_prob(ImageIO.read(image), 224, 224, "sequential_1_input", "sequential_3/dense_Dense2/Softmax");
+    float[] predict_image_prob(File image) throws IOException {
+        return super.predict_image_prob(ImageIO.read(image), this.imgWidth, this.imgHeight, this.input_operation, this.output_operation);
     }
 
     /**
-     * A function that prints both probabilities and results from teachable machine model
+     * A function that prints both probabilities and results from model
      *
      * @param image image to run
      */
-    void print_pred_teachable_machine(File image) {
+    void print_pred(File image) {
         try {
-            System.out.println(Arrays.toString(predict_image_prob_teachable_machine(image)));
-            System.out.println(predict_image_teachable_machine(image));
+            System.out.println(Arrays.toString(predict_image_prob(image)));
+            System.out.println(predict_image(image));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }
