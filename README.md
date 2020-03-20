@@ -21,7 +21,7 @@ With that out of the way let's get started.
 2. Select "Export Model", "TensorFlow", ensure that "Keras" is selected, and finally press "Download My Model".  
 3. Extract the zip file. in it, there should be 2 files: labels.txt and keras_model.h5.  
 4. Open the IntelliJ project you cloned from the "How to Setup The Project From Github" section.  
-5. Right-click on the "model-converter" folder on the left panel and select "show in explorer/finder/Linux alt".  
+5. Right-click on the "model-converter" folder on the left panel and select "show in explorer/finder/Linux alt" (or go to `EZClassifier/model-converter`).  
 6. In the new Explorer window double click on the "model-converter" folder, and then on the "model converter.exe".  
 * If you see an error message "blablabla.dll not found" **INSTALL PYTHON AND TRY AGAIN**. If the error persists got to the wiki article for building the model converter yourself.  
 7. in the select file prompt open the keras_model.h5 you extracted.
@@ -37,5 +37,5 @@ Running a model created by the teachable machine is nice, but if you want other 
       Bob
       Malinda
       ```
-2. Now you need to get the model info for your model. Open cmd and move to the directory that get-model-config.exe is in, usually it should be `C:\Users\[username]\IdeaProjects\EZ_Clasefie - rmaven\get-model-config`. Now execute: `get_model_config.exe`, select the converted PB model file. The program should (when done) output "input operation" and "output operation".
+2. Now you need to get the model info for your model. Open cmd and move to the directory that get-model-config.exe is in, usually it should be `EZClassifier\get-model-config`. Now execute: `get_model_config.exe`, select the converted PB model file. The program should (when done) output "input operation" and "output operation".
 3. Good Job! you can now create an instance of EZClasifier with a custom model. Note: you are expected to know the image dimensions your model expects if you don't - try 224,224
