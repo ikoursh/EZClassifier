@@ -1,4 +1,6 @@
 # EZClassifier
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fikoursh%2FEZClassifier.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fikoursh%2FEZClassifier?ref=badge_shield)
+
 A simple and easy TensorFlow classifier
 
 ## How To Install 
@@ -39,3 +41,7 @@ Running a model created by the teachable machine is nice, but if you want other 
       ```
 2. Now you need to get the model info for your model. Open cmd and move to the directory that get-model-config.exe is in, usually it should be `EZClassifier\get-model-config`. Now execute: `get_model_config.exe`, select the converted PB model file. The program should (when done) output "input operation" and "output operation".
 3. Good Job! you can now create an instance of EZClasifier with a custom model. Note: you are expected to know the image dimensions your model expects if you don't - try 224,224
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fikoursh%2FEZClassifier.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fikoursh%2FEZClassifier?ref=badge_large)
